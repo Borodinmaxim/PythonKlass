@@ -11,3 +11,7 @@ class Direction:
 
     def get_name_direction(self):
         return self.name_direction
+
+    def __str__(self):
+        return f'direction: {self.name_direction}'
+

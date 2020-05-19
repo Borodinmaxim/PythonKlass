@@ -14,7 +14,10 @@ class Syllabus:
         return self.start
 
     def set_finish(self, finish):
-        self.finish
+        self.finish = finish
 
     def get_finish(self):
         return self.finish
+
+    def __str__(self):
+        return f'Начало: {self.start} Конец: {self.finish}'

@@ -1,11 +1,10 @@
-from python.studying import Studying
-from python.topic import Topic
+from db.base import db, Required, Optional
+from db.Studying import Studying
+from db.Topic import Topic
 
-
-class Subtheme:
-    def __init__(self, studying: Studying, topic: Topic):
-        self.studying = studying
-        self.topic = topic
+class Subtheme(db.Entity):
+    studying = Optional('Studying')
+    topic = Optional('Topic')
 
     def set_studying(self, studying):
         self.studying = studying
@@ -20,4 +19,4 @@ class Subtheme:
         return self.topic
 
     def __str__(self):
-        return f'topic: {self.topic} '
+        return f'topic: {self.topic}'

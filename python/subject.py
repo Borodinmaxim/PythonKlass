@@ -21,3 +21,7 @@ class Subject:
 
     def get_teacher(self):
         return self.teacher
+
+
+    def __str__(self):
+        return f'item_name: {self.item_name} teacher: {self.teacher} '

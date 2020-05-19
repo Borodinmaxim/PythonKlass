@@ -29,4 +29,4 @@ class Human:
     """Метод: перегрузка строки, для вывода информации о классе"""
 
     def __str__(self):
-        return f'first_name:\n{self.first_name}\nsecond_name:\n{self.second_name}\npatronymic:\n{self.patronymic}'
+        return f'first_name: {self.first_name}\nsecond_name: {self.second_name}\npatronymic: {self.patronymic}'

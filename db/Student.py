@@ -1,12 +1,13 @@
+from db.base import db, Required, Optional
 from datetime import datetime
 
-from python.human import Human
+from db.Human import Human
 
 
 class Student(Human):
-    def __init__(self, date: datetime, first_name, second_name, patronymic):
-        super().__init__(first_name, second_name, patronymic)
-        self.date = date
+    result = Optional('Result')
+    date = Required(datetime)
+
 
     def set_date(self, date):
         self.date = date

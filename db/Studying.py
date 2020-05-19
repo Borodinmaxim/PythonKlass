@@ -1,17 +1,17 @@
-from python.klas import Klas
-from python.syllabus import Syllabus
-from python.subject import Subject
-from python.teacher import Teacher
+from db.base import db, Required, Optional
+from db.Klas import Klas
+from db.Syllabus import Syllabus
+from db.Subject import Subject
+from db.Teacher import Teacher
 
-
-class Studying:
-    def __init__(self, hour: int, klas: Klas, syllabus: Syllabus, subject: Subject, teacher: Teacher):
-        self.hour = hour
-        self.klas = klas
-        self.syllabus = syllabus
-        self.subject = subject
-        self.teacher = teacher
-        self.sub_theme = []
+class Studying(db.Entity):
+    hour = Optional(int)
+    klas = Optional('Klas')
+    syllabus = Optional('Syllabus')
+    subject = Optional('Subject')
+    teacher = Optional('Teacher')
+    subtheme = Optional('Subtheme')
+    sub_theme = []
 
     def get_sub_themes(self):
         return self.sub_theme
@@ -48,4 +48,4 @@ class Studying:
 
     def __str__(self):
         return f'hour: {self.hour}\nklas: {self.klas}\nsyllabus: {self.syllabus} ' \
-               f'\nsubject: {self.subject}\nteacher: {self.teacher}\nТемы:{", ".join([str(i) for i in self.sub_theme])} '
+               f'\nsubject: {self.subject}\nteacher: {self.teacher}\nТемы:{", ".join([str(i) for i in self.sub_theme])}'

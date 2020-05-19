@@ -1,27 +1,16 @@
-from python.syllabus import Syllabus
-from python.direction import Direction
+from db.base import db, Required, Optional
 from datetime import datetime
+from db.Direction import Direction
+from db.Syllabus import Syllabus
 
-
-class Klas:
-    def __init__(self, number: int = None, date_set: datetime = None, letter = None, direction: Direction = None, syllabus: Syllabus = None,):
-        self.number = number
-        self.date_set = date_set
-        self.letter = letter
-        self.direction = direction
-        self.syllabus = syllabus
-        self.students = []
-
-
-    def __str__(self):
-        return f'Дата набора: {self.date_set}\nНаправление: {self.direction} ' \
-               f'\nУчебный план: {self.syllabus}\nУченики: {", ".join([str(i) for i in self.students])}'
-
-    def prt_students(self):
-        for x in self.students:
-            if x != None:
-                print(x)
-
+class Klas(db.Entity):
+    studying = Optional('Studying')
+    number = Optional(int)
+    date_set = Required(datetime)
+    letter = Required(str)
+    direction = Required(Direction)
+    syllabus = Required(Syllabus)
+    students = []
 
     def add_student(self, student):
         self.students.append(student)
@@ -64,3 +53,7 @@ class Klas:
         t = datetime.now()
         number = t - d
         return number.days // 365 + 1
+
+    def __str__(self):
+        return f'Дата набора: {self.date_set}\nНаправление: {self.direction} ' \
+               f'\nУчебный план: {self.syllabus}\nУченики: {", ".join([str(i) for i in self.students])}'
